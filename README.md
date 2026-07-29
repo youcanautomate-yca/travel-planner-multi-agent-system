@@ -1,5 +1,7 @@
 # Travel Planner Multi-Agent System
 
+# Watch the complete implementation session here [https://youtu.be/JhmqzNl8y_w]
+
 A multi-agent travel planning system built with CrewAI that helps you create comprehensive travel itineraries with budget analysis.
 
 ## Features
