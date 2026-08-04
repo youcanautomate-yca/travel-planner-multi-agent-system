@@ -5,11 +5,10 @@ Travel Planner Multi-Agent System - Hierarchical Pattern
 This script demonstrates a hierarchical multi-agent travel planning system using CrewAI.
 
 Architecture:
-- Level 1: Travel Coordinator (orchestrates the process)
-- Level 2: Specialized Teams
-  - Research Team (Attractions, Food, Accommodation) - runs in parallel
-  - Planning Team (Itinerary, Logistics) - runs sequentially
-  - Financial Team (Budget Analysis)
+- Manager Agent: Senior Travel Manager who coordinates all specialists
+- Specialist Agents: Attraction Researcher, Hotel Researcher, Food Researcher, 
+                     Travel Planner, Budget Analyst
+- Process: Hierarchical - Manager delegates to specialists and synthesizes outputs
 
 Setup:
 1. Add your OpenAI API key to the .env file:
@@ -30,17 +29,14 @@ def main():
     print("🧳 Travel Planner Multi-Agent System - Hierarchical Pattern")
     print("=" * 70)
     print()
-    print("📊 Organizational Structure:")
-    print("  L1: Travel Coordinator")
-    print("  ├── L2A: Research Team (Parallel)")
-    print("  │   ├── Attraction Specialist")
-    print("  │   ├── Food Specialist")
-    print("  │   └── Accommodation Specialist")
-    print("  ├── L2B: Planning Team (Sequential)")
-    print("  │   ├── Itinerary Planner")
-    print("  │   └── Logistics Manager")
-    print("  └── L2C: Financial Team")
-    print("      └── Budget Analyst")
+    print("📊 Manager-based Hierarchy:")
+    print("  Manager: Senior Travel Manager")
+    print("  ├── Specialists (coordinated by manager):")
+    print("  │   ├── Attraction Researcher")
+    print("  │   ├── Hotel Researcher")
+    print("  │   ├── Food Researcher")
+    print("  │   ├── Travel Planner")
+    print("  │   └── Budget Analyst")
     print()
     print("=" * 70)
     print()
