@@ -14,8 +14,7 @@ Setup:
 3. Run this script:
    python main.py
 """
-
-from agents.travel_agents import travel_crew
+from travel_planner_with_parallel_pattern.agents_tasks.agents_tasks import travel_crew_parallel
 
 
 def main():
@@ -25,11 +24,11 @@ def main():
     print()
     
     # Run the crew with sample inputs
-    result = travel_crew.kickoff(
+    result = travel_crew_parallel.kickoff(
         inputs={
             "destination": "Paris",
             "duration": "7 days",
-            "budget": "₹1,50,000",
+            "budget": "₹2,00,000",
             "preferences": (
                 "History, culture, food, photography, and popular landmarks"
             )

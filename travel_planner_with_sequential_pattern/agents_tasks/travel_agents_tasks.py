@@ -193,7 +193,7 @@ budget_task = Task(
 # -----------------------------
 # Create Crew
 # -----------------------------
-travel_crew = Crew(
+travel_crew_sequential = Crew(
     agents=[
         destination_researcher,
         itinerary_planner,
