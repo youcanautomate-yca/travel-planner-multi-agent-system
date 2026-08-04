@@ -36,7 +36,8 @@ manager = Agent(
     """,
 
     llm=llm,
-    verbose=True
+    verbose=True,
+    allow_delegation=True
 )
 
 attraction_agent = Agent(
@@ -44,7 +45,8 @@ attraction_agent = Agent(
     goal="Find the best tourist attractions",
     backstory="Expert in famous tourist attractions around the world.",
     llm=llm,
-    verbose=True
+    verbose=True,
+    allow_delegation=False
 )
 
 hotel_agent = Agent(
@@ -52,7 +54,8 @@ hotel_agent = Agent(
     goal="Recommend the best hotels and areas to stay",
     backstory="Travel accommodation expert.",
     llm=llm,
-    verbose=True
+    verbose=True,
+    allow_delegation=False
 )
 
 food_agent = Agent(
@@ -60,7 +63,8 @@ food_agent = Agent(
     goal="Find famous restaurants and local cuisine",
     backstory="Expert in food and culinary experiences.",
     llm=llm,
-    verbose=True
+    verbose=True,
+    allow_delegation=False
 )
 
 itinerary_agent = Agent(
@@ -68,7 +72,8 @@ itinerary_agent = Agent(
     goal="Create the best itinerary",
     backstory="Experienced travel planner.",
     llm=llm,
-    verbose=True
+    verbose=True,
+    allow_delegation=False
 )
 
 budget_agent = Agent(
@@ -76,7 +81,8 @@ budget_agent = Agent(
     goal="Estimate total travel cost",
     backstory="Financial expert for travel planning.",
     llm=llm,
-    verbose=True
+    verbose=True,
+    allow_delegation=False
 )
 
 # -------------------------------------------------
@@ -86,20 +92,23 @@ budget_agent = Agent(
 travel_task = Task(
 
     description="""
-    Plan a trip.
+    Plan a complete trip to {destination}.
 
-    Destination : {destination}
+    Duration: {duration}
+    Budget: {budget}
+    Preferences: {preferences}
 
-    Duration : {duration}
-
-    Budget : {budget}
-
-    Preferences : {preferences}
-
-    Produce a complete travel plan.
+    Your role:
+    1. Delegate attraction research to the Attraction Researcher
+    2. Delegate accommodation research to the Hotel Researcher
+    3. Delegate food research to the Food Researcher
+    4. Delegate itinerary creation to the Travel Planner
+    5. Delegate budget analysis to the Budget Analyst
+    
+    After gathering all information, synthesize it into a comprehensive travel plan.
     """,
 
-    expected_output="Complete travel itinerary",
+    expected_output="Complete and detailed travel itinerary",
 
     agent=manager
 )
