@@ -17,24 +17,23 @@ llm = LLM(
 
 manager = Agent(
     role="Senior Travel Manager",
-
     goal="""
-    Coordinate all travel specialists
-    and create the best travel plan.
+    Analyze travel requests, decide which specialists should work,
+    coordinate their work, validate the results,
+    and deliver the best travel plan.
     """,
-
     backstory="""
-    You are a senior travel consultant.
+    You are the team leader of an AI travel agency.
 
-    You never solve everything yourself.
+    You never perform specialist work yourself.
 
-    Instead you decide which specialist
-    should perform each task.
-
-    You combine all specialist outputs
-    into a complete travel plan.
+    Instead, you:
+    - Understand the customer's request
+    - Decide which expert should handle each task
+    - Review the quality of every response
+    - Request additional work when necessary
+    - Combine everything into one final travel plan
     """,
-
     llm=llm,
     verbose=True,
     allow_delegation=True
@@ -90,27 +89,14 @@ budget_agent = Agent(
 # -------------------------------------------------
 
 travel_task = Task(
-
     description="""
     Plan a complete trip to {destination}.
 
     Duration: {duration}
     Budget: {budget}
     Preferences: {preferences}
-
-    Your role:
-    1. Delegate attraction research to the Attraction Researcher
-    2. Delegate accommodation research to the Hotel Researcher
-    3. Delegate food research to the Food Researcher
-    4. Delegate itinerary creation to the Travel Planner
-    5. Delegate budget analysis to the Budget Analyst
-    
-    After gathering all information, synthesize it into a comprehensive travel plan.
     """,
-
-    expected_output="Complete and detailed travel itinerary",
-
-    agent=manager
+    expected_output="A complete travel plan including itinerary, accommodation, food recommendations and budget analysis."
 )
 
 
